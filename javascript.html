@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function gettimer(a,b){
+            document.getElementById("showtimer").innerHTML = b+":"+a;
+            setInterval(reduction,1000);
+        }
+        function reduction(){
+            var latestvalue = document.getElementById("showtimer").innerHTML;
+            var newtime =  latestvalue.split(":");
+            var min = newtime[0]
+            var sec = newtime[1]
+            if(sec>=1){
+                sec = sec - 1;
+            }else{
+                min = min - 1;
+                sec = 59;
+            }
+            if(min<=0 && sec <=0 ){
+                latestvalue = "00:00"
+            }else{
+                latestvalue = min+":"+sec
+            }
+            
+            
+            document.getElementById('showtimer').innerHTML=latestvalue;
+        }
+
+    </script>
+</head>
+<body>
+    <center>
+    <div>
+        <h1><b><div id="showtimer">00:00</div></b></h1>
+    </div>
+    <input type="number" name="yes" placeholder="Number of minutes" id="min">
+    <input type="number" name="yes" placeholder="Number of seconds" id="dev">
+    <br><br><button onclick="gettimer(document.getElementById('dev').value,document.getElementById('min').value)" >Start TImer</button>
+</body>
+</html>
